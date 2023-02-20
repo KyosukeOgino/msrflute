@@ -94,10 +94,10 @@ def run_worker(model_path, config, task, data_path, local_rank, backend):
     dist.init_process_group(backend=backend, init_method=None, rank=WORLD_RANK, world_size=federated.size())
 
     # Assign NCCL thread to a specific GPU
-    if torch.cuda.is_available():
-        print_rank(f"Assigning worker to GPU {LOCAL_RANK}")
-        device = torch.device("cuda:{}".format(LOCAL_RANK))
-        torch.cuda.set_device(device)
+    #if torch.cuda.is_available():
+        #print_rank(f"Assigning worker to GPU {LOCAL_RANK}")
+        #device = torch.device("cuda:{}".format(LOCAL_RANK))
+        #torch.cuda.set_device(device)
 
     # Make the Model to distribute to workers
     model = make_model(model_config)
